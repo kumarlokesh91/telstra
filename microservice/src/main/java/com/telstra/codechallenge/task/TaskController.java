@@ -1,7 +1,9 @@
 package com.telstra.codechallenge.task;
 
+
+import com.telstra.codechallenge.exception.UrlNulloRNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.trace.http.HttpTrace;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,12 +12,12 @@ public class TaskController {
   @Autowired
   private TaskService taskService;
 
-  @RequestMapping(path = "/users", method = RequestMethod.GET)
-  public   @ResponseBody ItemModel  taskData(@RequestParam("q") String q) {
-    System.out.println("q value" + q);
-   ItemModel itemModel = taskService.getTaskData(q);
-    System.out.println("item "+itemModel.getItem().size());
-    return itemModel;
+ @GetMapping("/users")
+  public ResponseEntity<ItemModel> taskData(@RequestParam("qvalue") String qValue,
+                                         @RequestParam("limit") int limit)
+                                         throws UrlNulloRNotFoundException {
+     ItemModel items=taskService.getTaskData(qValue,limit);
+   return ResponseEntity.ok().body(items);
   }
 
 }
