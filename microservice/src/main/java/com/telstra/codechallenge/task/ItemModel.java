@@ -14,7 +14,8 @@ public class ItemModel {
   private List<Items> items; 
   @JsonIgnoreProperties(ignoreUnknown = true) 
   @Data
-  public static class Items { 
+  public static class Items {
+  	public Items() {}
     @JsonCreator
 	public Items(@JsonProperty("idCounter") long idCounter, @JsonProperty("login")
                   String login,@JsonProperty("html_url")String htmlUrl) { 

@@ -33,7 +33,7 @@ public class TaskService {
      return setLimitToItem(item,limit);
   }
 
-  private ItemModel setLimitToItem(ItemModel item,int limit) {
+  public ItemModel setLimitToItem(ItemModel item,int limit) {
 	ItemModel itemL =new ItemModel();
 	itemL.setItems(item.getItems().stream().limit(limit).collect(Collectors.toList()));
 	return itemL;
