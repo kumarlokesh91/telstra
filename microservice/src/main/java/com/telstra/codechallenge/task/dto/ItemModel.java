@@ -1,4 +1,4 @@
-package com.telstra.codechallenge.task;
+package com.telstra.codechallenge.task.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
